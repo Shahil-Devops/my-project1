@@ -1,7 +1,7 @@
-name: python app
+name: Docker Project
 on: push
 jobs:
-  build:
+  docker-job:
   runs-on: ubuntu:latest
   steps:
     - name: Repository file get
