@@ -2,12 +2,12 @@ name: Docker Project
 on: push
 jobs:
   docker-job:
-  runs-on: ubuntu:latest
-  steps:
-    - name: Repository file get
-      run: actions/checkout@v4
-    - name: build Dockerfile
-      run: docker build -t myapp .
-    - name: start container
-      run: docker run myapp
+    runs-on: ubuntu:latest
+    steps:
+      - name: Repository file get
+        run: actions/checkout@v4
+      - name: build Dockerfile
+        run: docker build -t myapp .
+      - name: start container
+        run: docker run myapp
     
