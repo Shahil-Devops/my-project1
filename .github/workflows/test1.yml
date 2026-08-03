@@ -1,0 +1,17 @@
+name: tes1
+on: push
+jobs:
+  hello:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout repository
+        uses: action/checkout@v4
+
+      - name: show files
+        run: ls
+      - name: print message
+        run: echo "Hello World"
+      - name: cat the file
+        run: cat hello.txt
+      - name: show current folder
+        run: pwd
