@@ -1,17 +1,17 @@
-name: tes1
+name: python program
 on: push
 jobs:
-  hello:
+  python-job:
     runs-on: ubuntu-latest
     steps:
       - name: checkout repository
         uses: actions/checkout@v4
-
-      - name: show files
-        run: ls
-      - name: print message
-        run: echo "Hello World"
-      - name: cat the file
-        run: cat hello.txt
-      - name: show current folder
-        run: pwd
+      - name: install python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: check Python version
+        run: python --version
+      - name: run Python program
+        run: python app.py
+      
