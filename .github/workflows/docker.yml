@@ -1,13 +1,30 @@
-name: Docker Project
-on: push
+name: practice-job
+on: 
+  push:
+  workflow_dispatch:
+
+env: 
+  project: practice
+
 jobs:
-  docker-job:
+  test:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [3.11 , 3.12]
     steps:
-      - name: Repository file get
+      - name: checkout code
         uses: actions/checkout@v4
-      - name: build Dockerfile
-        run: docker build -t myapp .
-      - name: start container
-        run: docker run myapp
-    
+      - name: python setup
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{matrix.python-version}}
+
+      - name: cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: my-cache
+        
+   
+  
